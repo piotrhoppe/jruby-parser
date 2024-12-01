@@ -2124,6 +2124,10 @@ kwrest_mark     : tPOW {
 f_kwrest        : kwrest_mark tIDENTIFIER {
                     $$ = $2;
                 }
+                | kwrest_mark {
+                    // allow bare kwrest_mark as valid syntax
+                    $$ = $1;
+                }
 
 f_opt           : f_norm_arg '=' arg_value {
                     support.arg_var(support.formal_argument($1));
